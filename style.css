@@ -365,3 +365,116 @@ a.button {
 }
 
 
+.education-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  height: auto;
+  max-height: 200px; /* Altura inicial */
+}
+
+.card.open {
+  max-height: 500px; /* Altura máxima al abrir */
+  transition: max-height 0.5s ease;
+}
+
+.toggle-btn {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card.open .toggle-btn {
+  transform: rotate(90deg); /* Flechita gira a ➤ */
+}
+
+.content-extra {
+  opacity: 0;
+  visibility: hidden;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.card.open .content-extra {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ================== Sección de Contacto ================== */
+.contact-description {
+  max-width: 600px;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: var(--text-color);
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.contact-info li {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.contact-info a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-info a:hover {
+  color: var(--primary-color);
+}
+
+/* Enlaces con iconos */
+.social-links h4 {
+  margin-bottom: 1rem;
+}
+
+.social-icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+  color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.social-icon svg {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+}

@@ -30,24 +30,18 @@ document.querySelectorAll('a, button, .card').forEach(el => {
 });
 
 
-// HUD UI
-const hud = document.querySelector('.hud');
-window.addEventListener('scroll', () => {
-  const scrollY = window.scrollY;
-  hud.style.opacity = 1 - Math.min(scrollY / 200, 0.8);
-});
+document.querySelectorAll('.card').forEach(card => {
+  const btn = card.querySelector('.toggle-btn');
 
-// Botón de sonido
-const soundToggle = document.getElementById("soundToggle");
-let audio = new Audio('ambience.mp3'); // Asegúrate de tener este archivo
-audio.loop = true;
+  btn.addEventListener('click', () => {
+    // Cierra todas las demás tarjetas
+    document.querySelectorAll('.card').forEach(c => {
+      if (c !== card) {
+        c.classList.remove('open');
+      }
+    });
 
-soundToggle.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.play();
-    soundToggle.textContent = "🔊 Sound: On";
-  } else {
-    audio.pause();
-    soundToggle.textContent = "🔇 Sound: Off";
-  }
+    // Alterna la apertura de esta tarjeta
+    card.classList.toggle('open');
+  });
 });
