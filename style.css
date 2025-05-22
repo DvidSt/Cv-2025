@@ -1,0 +1,367 @@
+/* ================== Variables ================== */
+:root {
+  --primary-color: #1e1e2f;
+  --secondary-color: #6c63ff; /* Morado */
+  --bg-color: #f9f9f9;
+  --text-color: #333;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 2rem;
+}
+
+/* ================== Hero Section Full Screen ================== */
+
+
+.hero {
+  min-height: 100vh;
+  background: var(--primary-color);
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.container-hero {
+  z-index: 2;
+  padding: 2rem;
+}
+
+/* Nombre animado - glitch style opcional */
+.glitch {
+  font-size: 3.5rem;
+  font-weight: bold;
+  position: relative;
+  color: white;
+  text-transform: uppercase;
+  animation: glitch-animation 3s infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.8;
+  mix-blend-mode: screen;
+}
+
+.glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 red;
+  animation: noise-anim 2s infinite alternate-reverse;
+}
+
+.glitch::after {
+  left: -2px;
+  text-shadow: 2px 0 blue;
+  animation: noise-anim-2 3s infinite alternate-reverse;
+}
+
+.glitch:hover {
+  background-position-x: 100%;
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  opacity: 0.8;
+  max-width: 600px;
+  margin-bottom: 2rem;
+  animation: fadeInUp 2s ease forwards;
+}
+
+/* Flecha animada hacia abajo */
+.scroll-down {
+  display: inline-block;
+  width: 30px;
+  height: 50px;
+  border: 2px solid white;
+  border-radius: 50px;
+  position: relative;
+  animation: bounce 2s infinite;
+  transition: all 0.3s ease;
+}
+
+.scroll-down:hover {
+  transform: scale(1.1);
+}
+
+.scroll-down span {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  animation: scrollMove 1.5s infinite;
+}
+
+/* ================== Navegación ================== */
+.nav {
+  margin-top: 2rem;
+}
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+.nav a:hover {
+  opacity: 0.7;
+}
+
+/* ================== Secciones ================== */
+.section {
+  padding: 4rem 0;
+  background: white;
+}
+
+.section.dark {
+  background: #f0f0f0;
+}
+
+/* ================== Timeline General ================== */
+.timeline .item {
+  margin-bottom: 2rem;
+}
+
+/* ================== Tarjetas de Educación ================== */
+.education-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  position: relative;
+  cursor: help;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.card:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.5);
+}
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease;
+  z-index: 10;
+}
+
+.card:hover .tooltip,
+.card:focus .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--primary-color) transparent transparent transparent;
+}
+
+/* ================== Proyectos ================== */
+.projects-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.project-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ================== Footer ================== */
+footer {
+  background: var(--primary-color);
+  color: white;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+/* ================== Animaciones Globales ================== */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(10px); }
+}
+
+@keyframes scrollMove {
+  0% { top: 10px; opacity: 0; }
+  50% { opacity: 1; }
+  100% { top: 30px; opacity: 0; }
+}
+
+@keyframes noise-anim {
+  0% { clip-path: inset(0 100% 0 0); }
+  5% { clip-path: inset(49% 49% 50% 51%); }
+  10% { clip-path: inset(0 0 100% 0); }
+  15% { clip-path: inset(51% 50% 49% 49%); }
+  20% { clip-path: inset(100% 0 0 0); }
+  100% { clip-path: inset(0 100% 0 0); }
+}
+
+@keyframes noise-anim-2 {
+  0% { clip-path: inset(0 100% 0 0); }
+  5% { clip-path: inset(51% 50% 49% 49%); }
+  10% { clip-path: inset(0 0 100% 0); }
+  15% { clip-path: inset(49% 49% 50% 51%); }
+  20% { clip-path: inset(100% 0 0 0); }
+  100% { clip-path: inset(0 100% 0 0); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll suave */
+html {
+  scroll-behavior: smooth;
+}
+
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.8rem;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+body {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' stroke='%236c63ff' fill='none' stroke-width='1.5'/%3E%3C/svg%3E") 12 12, auto;
+}
+
+.card,
+.project-card,
+.scroll-down,
+button,
+a.button {
+  transition: all 0.3s ease;
+}
+
+.card:hover,
+.project-card:hover,
+.scroll-down:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+}
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 1s forwards;
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tooltip {
+  visibility: hidden;
+  opacity: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 300px;
+  font-size: 0.9rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.card:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, -10px);
+}
+
+
